@@ -59,28 +59,48 @@ def ia_fuzzy():
     # Se nenhuma jogada for possível, retorna None
     return None
 
+# Escolha do modo de jogo
+modo = input("Escolha o modo de jogo (1 - Contra IA, 2 - Contra outro jogador): ")
+
 # Jogabilidade
+jogador_atual = 'X'
 while True:
     imprimir_tabuleiro()
-    jogada = input("Sua jogada (1-9): ")
-    tabuleiro[int(jogada) - 1] = 'X'
-
-    if verificar_vitoria('X'):
-        imprimir_tabuleiro()
-        print("Você ganhou!")
-        break
-
-    jogada_ia = ia_fuzzy()
     
-    # Verifica se ainda há jogadas possíveis
-    if jogada_ia is None:
+    if modo == '1':  # Modo contra IA
+        if jogador_atual == 'X':
+            jogada = input("Sua jogada (1-9): ")
+            tabuleiro[int(jogada) - 1] = 'X'
+            if verificar_vitoria('X'):
+                imprimir_tabuleiro()
+                print("Você ganhou!")
+                break
+            jogador_atual = 'O'
+        else:
+            jogada_ia = ia_fuzzy()
+            if jogada_ia is None:
+                imprimir_tabuleiro()
+                print("O jogo deu velha!")
+                break
+            tabuleiro[jogada_ia] = 'O'
+            if verificar_vitoria('O'):
+                imprimir_tabuleiro()
+                print("IA ganhou!")
+                break
+            jogador_atual = 'X'
+    
+    elif modo == '2':  # Modo contra outro jogador
+        jogada = input(f"Jogador {jogador_atual}, sua jogada (1-9): ")
+        tabuleiro[int(jogada) - 1] = jogador_atual
+        if verificar_vitoria(jogador_atual):
+            imprimir_tabuleiro()
+            print(f"Jogador {jogador_atual} ganhou!")
+            break
+        # Alterna entre 'X' e 'O'
+        jogador_atual = 'O' if jogador_atual == 'X' else 'X'
+
+    # Verifica se deu velha (tabuleiro cheio sem vitória)
+    if all(spot in ['X', 'O'] for spot in tabuleiro):
         imprimir_tabuleiro()
         print("O jogo deu velha!")
-        break
-
-    tabuleiro[jogada_ia] = 'O'
-
-    if verificar_vitoria('O'):
-        imprimir_tabuleiro()
-        print("IA ganhou!")
         break
