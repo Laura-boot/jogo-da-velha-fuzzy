@@ -1,0 +1,1 @@
+## Lista as dependências para o Flask e outras bibliotecas necessárias.
