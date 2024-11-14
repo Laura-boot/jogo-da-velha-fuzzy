@@ -1,25 +1,29 @@
 ## Backend (Flask)
 
-Rotas RESTful:
+1. Rotas RESTful:
 - Iniciar Jogo: Uma rota para iniciar ou reiniciar o jogo, definindo o estado inicial do tabuleiro.
 - Fazer Jogada: Recebe a posição e o jogador (X ou O) e atualiza o estado do tabuleiro, retornando o novo estado.
 - Verificar Vitória: Verifica o estado do jogo após cada jogada e retorna o vencedor, se houver.
-- Gerenciamento de Estado:Mantenha o estado do tabuleiro e o placar dos jogadores (X e O) no backend para garantir consistência ao reiniciar ou atualizar o jogo.
 
-Frontend (React)
-Layout e Componentes:
+2. Gerenciamento de Estado: 
+- Mantenha o estado do tabuleiro e o placar dos jogadores (X e O) no backend para garantir consistência ao reiniciar ou atualizar o jogo.
 
-Modo de Jogo: No topo da interface, adicione um botão deslizante para o usuário selecionar se deseja jogar contra a IA ou contra outro jogador.
-Tabuleiro (Board): O tabuleiro centralizado, composto por 9 botões quadrados representando as posições do jogo.
-Componente de Placar (Scoreboard): Exibe o número de vitórias de X e O.
-Botão de Reinício: Surge ao final de cada jogo, permitindo reiniciar o tabuleiro e a partida.
-CSS e Estilo:
+## Frontend (React)
 
-Botões Camuflados: Defina um estilo para que os botões do tabuleiro tenham fundo transparente e bordas invisíveis, para que pareçam camuflados no fundo branco.
-Hover e Transparência: Quando o usuário passa o mouse sobre um botão do tabuleiro, mostre o ícone (X ou O) de forma translúcida.
-Estilos de Placar: Coloque os ícones X e O, seguidos do contador de vitórias, com uma fonte que se destaque no placar.
-Interatividade:
+1. Layout e Componentes:
+- Modo de Jogo: No topo da interface, adicione um botão deslizante para o usuário selecionar se deseja jogar contra a IA ou contra outro jogador.
+- Tabuleiro (Board): O tabuleiro centralizado, composto por 9 botões quadrados representando as posições do jogo.
+- Componente de Placar (Scoreboard): Exibe o número de vitórias de X e O.
+- Botão de Reinício: Surge ao final de cada jogo, permitindo reiniciar o tabuleiro e a partida.
 
-Eventos de Clique: Cada botão do tabuleiro deve registrar a jogada e enviar a posição ao backend.
-Feedback Visual: Atualize o estado do tabuleiro e o placar com base na resposta do backend.
-Reinício: O botão de reinício limpa o estado do tabuleiro, mantendo o placar atualizado.
+2. CSS e Estilo:
+- Botões Camuflados: Defina um estilo para que os botões do tabuleiro tenham fundo transparente e bordas invisíveis, para que pareçam camuflados no fundo branco.
+- Hover e Transparência: Quando o usuário passa o mouse sobre um botão do tabuleiro, mostre o ícone (X ou O) de forma translúcida.
+- Estilos de Placar: Coloque os ícones X e O, seguidos do contador de vitórias, com uma fonte que se destaque no placar.
+- Opções de estilização adicionais:
+    ~ modo claro/escuro, podem ser consideradas para uma melhor experiência do usuário.
+
+3. Interatividade:
+- Eventos de Clique: Cada botão do tabuleiro deve registrar a jogada e enviar a posição ao backend.
+- Feedback Visual: Atualize o estado do tabuleiro e o placar com base na resposta do backend.
+- Reinício: O botão de reinício limpa o estado do tabuleiro, mantendo o placar atualizado.
